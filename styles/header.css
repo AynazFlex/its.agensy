@@ -1,0 +1,141 @@
+.slider {
+    position: relative;
+}
+
+.header__label {
+    display: none;
+    color: #1F2020;
+    padding: 18px 24px 48px;
+}
+
+.slider__label,
+.header__label {
+    gap: 8px;
+    align-items: center;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 100%;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.3;
+}
+
+.slider__label {
+    display: flex;
+    color: #FFFFFF;
+    position: absolute;
+    top: 32px;
+    left: 64px;
+}
+
+.slider__next {
+    position: absolute;
+    top: 354px;
+    right: 420px;
+}
+
+.slider__next,
+.slider__prev {
+    background: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0px;
+    outline: none;
+    cursor: pointer;
+}
+
+.slider__next>img,
+.slider__prev>img {
+    display: block;
+    width: 20px;
+    height: 40px;
+}
+
+.slider__prev {
+    position: absolute;
+    top: 354px;
+    left: 420px;
+    transform: rotate(180deg);
+}
+
+.slider__items {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    height: 560px;
+    overflow: hidden;
+}
+
+.slider__item {
+    min-width: 100%;
+    background-image: url('../assets/img/colors.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.slider__item-title {
+    margin: 217px 0 24px 0;
+    text-align: center;
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 88%;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+}
+
+.slider__item-sub_title {
+    width: 472px;
+    margin: 0 auto 0 auto;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+}
+
+.slider__pagination {
+    position: absolute;
+    left: calc(50% - 62px);
+    bottom: 39px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    padding: 13px 24px;
+    display: flex;
+    gap: 8px;
+}
+
+.slider__pag-ball {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    opacity: 0.2;
+    cursor: pointer;
+}
+
+.slider__pag-ball--active {
+    background: #FFFFFF !important;
+    opacity: 1 !important;
+}
+
+@media only screen and (max-width: 1024px) {
+    .slider__next {
+        right: 200px;
+    }
+
+    .slider__prev {
+        left: 200px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .slider {
+        display: none;
+    }
+
+    .header__label {
+        display: flex;
+    }
+}

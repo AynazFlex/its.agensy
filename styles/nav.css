@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.nav__items {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1840px;
+    margin: auto;
+    height: 104px;
+    padding: 0 24px;
+    color: #1F2020;
+}
+
+.nav__logo {
+    display: block;
+    padding-top: 38px;
+    margin-right: 172px;
+    height: 100%;
+}
+
+.nav__logo>img {
+    display: block;
+    width: 131px;
+    height: 26px;
+}
+
+
+.nav__links {
+    padding-top: 45px;
+    display: flex;
+    gap: 24px;
+}
+
+.nav__link {
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    color: inherit;
+}
+
+.nav__number {
+    margin-left: auto;
+    margin-top: 36px;
+    margin-right: 116px;
+}
+
+.nav__number>div {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+}
+
+.nav__number>span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    opacity: 0.3;
+}
+
+.nav__options {
+    display: flex;
+    margin-top: 41px;
+    align-items: center;
+    gap: 24px;
+    margin-right: 24px;
+}
+
+.nav__options>svg {
+    cursor: pointer;
+}
+
+.nav__korzina {
+    margin-top: 40px;
+    padding-top: 3px;
+    width: 24px;
+    height: 24px;
+    background: #7BB899;
+    border-radius: 50%;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav__burger {
+    display: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    margin-top: 25px;
+}
+
+@media only screen and (max-width: 1350px) {
+    .nav__items {
+        justify-content: space-between;
+    }
+
+    .nav__logo {
+        margin-right: 0;
+    }
+
+    .nav__number {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .nav__options {
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 1110px) {
+    .nav__number,
+    .nav__options {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .nav__links {
+        display: none;
+    }
+
+    .nav__burger {
+        display: block;
+    }
+
+    .nav__items {
+        height: 64px;
+    }
+
+    .nav__logo {
+        padding-top: 21px;
+    }
+
+    .nav__logo>img {
+        width: 97px;
+        height: 20px;
+    }
+
+    .nav__korzina {
+        margin-top: 20px;
+    }
+}
