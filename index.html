@@ -7,10 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/checkbox.css">
     <link rel="stylesheet" href="./styles/nav.css">
     <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/footer.css">
-    <script defer src="main.js"></script>
+    <script defer src="./js/slider.js"></script>
+    <script defer src="./js/nav.js"></script>
+    <script defer src="./js/select.js"></script>
     <title>its.agensy</title>
 </head>
 <body>
@@ -59,6 +63,65 @@
             </div>
             <button class="nav__korzina">4</button>
         </div>
+        <div class="nav__checkboxes-for-mobile">
+            <div class="nav__checkboxes-for-mobile-wrapper">
+                <div class="checkbox__wrapper">
+                    <input class="checkbox__inp" checked type="checkbox" id="novelty_mbl" name="novelty" value="Новинки">
+                    <label for="novelty_mbl">
+                        <span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4" r="4" fill="#1F2020"/>
+                            </svg>                            
+                        </span>
+                        Новинки
+                    </label>
+                </div>
+                <div class="checkbox__wrapper">
+                    <input class="checkbox__inp" type="checkbox" id="available_mbl" name="available" value="Есть в наличии">
+                    <label for="available_mbl">
+                        <span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4" r="4" fill="#1F2020"/>
+                            </svg>                            
+                        </span>
+                        Есть в наличии
+                    </label>
+                </div>
+                <div class="checkbox__wrapper">
+                    <input class="checkbox__inp" type="checkbox" id="contract_mbl" name="contract" value="Контрактные">
+                    <label for="contract_mbl">
+                        <span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4" r="4" fill="#1F2020"/>
+                            </svg>                            
+                        </span>
+                        Контрактные
+                    </label>
+                </div>
+                <div class="checkbox__wrapper">
+                    <input class="checkbox__inp" type="checkbox" id="exclusive_mbl" name="exclusive" value="Эксклюзивные">
+                    <label for="exclusive_mbl">
+                        <span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4" r="4" fill="#1F2020"/>
+                            </svg>                            
+                        </span>
+                        Эксклюзивные
+                    </label>
+                </div>
+                <div class="checkbox__wrapper">
+                    <input class="checkbox__inp" type="checkbox" id="sale_mbl" name="sale" value="Распродажа">
+                    <label for="sale_mbl">
+                        <span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4" r="4" fill="#1F2020"/>
+                            </svg>                            
+                        </span>
+                        Распродажа
+                    </label>
+                </div>
+            </div>
+        </div>
     </nav>
     <header class="header">
         <div class="header__label">
@@ -72,6 +135,7 @@
             </svg>                
             <span>Краски</span>
         </div>
+        <h2 class="header__mobile">Краски</h2>
         <div id="slider" class="slider">
             <div class="slider__label">
                 Главная
@@ -128,7 +192,280 @@
     </header>
     <main class="main">
         <div class="main__container">
-            
+            <div class="main__checkboxes">
+                <div class="checkbox__wrapper">
+                    <input class="checkbox__inp" checked type="checkbox" id="novelty" name="novelty" value="Новинки">
+                    <label for="novelty">
+                        <span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4" r="4" fill="#1F2020"/>
+                            </svg>                            
+                        </span>
+                        Новинки
+                    </label>
+                </div>
+                <div class="checkbox__wrapper">
+                    <input class="checkbox__inp" type="checkbox" id="available" name="available" value="Есть в наличии">
+                    <label for="available">
+                        <span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4" r="4" fill="#1F2020"/>
+                            </svg>                            
+                        </span>
+                        Есть в наличии
+                    </label>
+                </div>
+                <div class="checkbox__wrapper">
+                    <input class="checkbox__inp" type="checkbox" id="contract" name="contract" value="Контрактные">
+                    <label for="contract">
+                        <span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4" r="4" fill="#1F2020"/>
+                            </svg>                            
+                        </span>
+                        Контрактные
+                    </label>
+                </div>
+                <div class="checkbox__wrapper">
+                    <input class="checkbox__inp" type="checkbox" id="exclusive" name="exclusive" value="Эксклюзивные">
+                    <label for="exclusive">
+                        <span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4" r="4" fill="#1F2020"/>
+                            </svg>                            
+                        </span>
+                        Эксклюзивные
+                    </label>
+                </div>
+                <div class="checkbox__wrapper">
+                    <input class="checkbox__inp" type="checkbox" id="sale" name="sale" value="Распродажа">
+                    <label for="sale">
+                        <span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="4" cy="4" r="4" fill="#1F2020"/>
+                            </svg>                            
+                        </span>
+                        Распродажа
+                    </label>
+                </div>
+            </div>
+            <div class="main__products">
+                <div class="main__products-top">
+                    <h3 class="main__desktop">412 товаров</h3>
+                    <h3 class="main__mobile">Фильтры</h3>
+                    <div class="main__sort">
+                        <div class="main__sort-block">
+                            <span class="main__sort-selected">Сначала дорогие</span>
+                            <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 7.5L8.4641 3L1.5359 3L5 7.5Z" fill="#202020"/>
+                            </svg>                                
+                        </div>
+                        <div class="main__sort-items main__close">
+                            <span>Сначала дорогие</span>
+                            <span>Сначала недорогие</span>
+                            <span>Сначала популярные</span>
+                            <span>Сначала новые</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__products-items">
+                    <div class="main__product">
+                        <img src="./assets/img/photo_1.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>6000 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_2.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>4800 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_3.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>5290 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_4.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>2800 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_5.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>3400 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_6.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>6000 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_7.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>4800 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_7.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>5290 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_8.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>2800 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_9.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>3400 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_6.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>6000 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_7.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>4800 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_7.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>5290 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_8.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>2800 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main__product">
+                        <img src="./assets/img/photo_9.png" alt="">
+                        <h2>Краска Wallquest, Brownsone MS90102</h2>
+                        <div class="main__product-info">
+                            <span>3400 ₽</span>
+                            <button>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 4.16663V15.8333" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.16699 10H15.8337" stroke="#1F2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                    
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <footer class="footer">
