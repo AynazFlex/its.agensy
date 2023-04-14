@@ -229,6 +229,7 @@ body {
     border: none;
     opacity: 0.4;
     cursor: pointer;
+    background: transparent;
 }
 
 .nav__product {

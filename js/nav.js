@@ -21,7 +21,6 @@ nav_checkboxes.onclick = e => {
 nav_korzina.onclick = () => {
     nav_products.classList.add('nav__active-3')
     nav_products_container.classList.add('nav__active-4')
-    document.body.style.overflow = 'hidden'
 }
 
 nav_products.onclick = (e) => {
@@ -29,7 +28,6 @@ nav_products.onclick = (e) => {
     if(!elem.closest('.nav__products_container') || elem.closest('.nav__products_close')) {
         animEnd(nav_products_container).then(() => nav_products.classList.remove('nav__active-3'))
         nav_products_container.classList.remove('nav__active-4')
-        document.body.style.overflow = 'auto'
     }
 }
 
@@ -51,6 +49,10 @@ nav_checkboxes_line.ontouchstart = (e) => {
         document.body.ontouchmove = null
         document.body.ontouchend = null
     }
+}
+
+novelty_mbl.onchange = (e) => {
+    console.log(novelty_mbl.checked)
 }
 
 function closeModal() {
