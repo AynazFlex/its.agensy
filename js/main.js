@@ -8,6 +8,9 @@ const info = nav__products_info.querySelector('span')
 const delete__all = nav__products_info.querySelector('button')
 const nav__products_close = nav_products.querySelector('.nav__products_close')
 const nav__products_total = nav_products.querySelector('.nav__products_total')
+const select = document.body.querySelector('.main__sort')
+const select_items = select.querySelector('.main__sort-items')
+const select_selected = select.querySelector('.main__sort-selected')
 
 class Store {
   constructor({ initState, reducer }) {
@@ -291,7 +294,7 @@ const initState = {
       title: "Краска Wallquest, Brownsone MS90102",
       img: "photo_2",
       amount: 2,
-      price: 9600,
+      price: 4800,
       delete: false
     },
     {
@@ -349,7 +352,7 @@ const reducer = (state, { type, payload }) => {
         korzina: [
           ...state.korzina,
           {
-            id: state.korzina.length,
+            id: state.korzina[state.korzina.length - 1].id + 1,
             title: payload.title,
             img: payload.img,
             amount: 1,
@@ -399,7 +402,16 @@ products.addConsumer((state) => {
       }
       return acum;
     }, [])
-    .map((item) =>
+
+    if(select_selected.textContent === 'Сначала дорогие') {
+        prod.sort((a, b) => +b.price - +a.price)
+    }
+
+    if(select_selected.textContent === 'Сначала недорогие') {
+        prod.sort((a, b) => +a.price - +b.price)
+    }
+
+    main__products.innerHTML = prod.map((item) =>
     `<div class="main__product">
           <img src="./assets/img/${item.img}.png" alt="">
           <h2>${item.title}</h2>
@@ -413,8 +425,7 @@ products.addConsumer((state) => {
               </button>
           </div>
       </div>`
-    )
-    main__products.innerHTML = prod.join('')
+    ).join('')
     main__desktop.textContent = `${prod.length} товаров`
 });
 
@@ -424,7 +435,7 @@ products.addConsumer(state => {
             <img class="nav__product_img${item.delete ? ' nav__product--04op' : ''}" src="./assets/img/${item.img}.png" alt="">
             <div class="nav__product_info${item.delete ? ' nav__product--02op' : ''}">
                 <a href="#" class="nav__product_title">${item.title}</a>
-                <div class="nav__product_price">${item.price} ₽</div>
+                <div class="nav__product_price">${item.price*item.amount} ₽</div>
             </div>
             <div class="nav__product_panel${item.delete ? ' nav__product--02op' : ''}">
                 <button data-id=${item.delete || item.id} class="nav__product_button-minus">
@@ -517,6 +528,14 @@ nav__products_close.onclick = () => {
     }])
 }
 
+select.onclick = (e) => {
+    const elem = e.target.closest('.main__sort-items>span')
+    if(elem) {
+        select_selected.textContent = elem.textContent
+        products.render()
+    }
+    select_items.classList.toggle('main__close')
+}
 novelty.onchange = () => {
     novelty_mbl.checked = novelty.checked
     products.render()
