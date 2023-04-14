@@ -1,7 +1,6 @@
 "use strict"
 
 const select = document.body.querySelector('.main__sort')
-console.log(select)
 const select_items = select.querySelector('.main__sort-items')
 const select_selected = select.querySelector('.main__sort-selected')
 

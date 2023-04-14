@@ -132,12 +132,24 @@ body {
     padding: 54px 24px;
 }
 
+.nav__checkboxes-line {
+    position: absolute;
+    display: block;
+    top: 12px;
+    left: calc(50% - 14px);
+    width: 28px;
+    height: 4px;
+    background: #1F2020;
+    opacity: 0.6;
+    border-radius: 40px;
+}
+
 .nav__active-1 {
     display: none;
 }
 
 .nav__active-2 {
-    top: 160px !important;
+    top: 160px;
 }
 
 .nav__products {
@@ -168,6 +180,7 @@ body {
     width: 600px;
     background: #FFFFFF;
     transition: .4s;
+    overflow-y: auto;
 }
 
 .nav__products_close {
@@ -278,7 +291,7 @@ body {
     color: #1F2020;
 }
 
-.nav__product_delete {
+.nav__product_btn {
     display: block;
     outline: none;
     border: none;
@@ -288,6 +301,14 @@ body {
     padding: 0;
     width: 24px;
     height: 24px;
+}
+
+.nav__product--02op {
+    opacity: 0.2;
+}
+
+.nav__product--04op {
+    opacity: 0.4;
 }
 
 @media only screen and (max-width: 1350px) {
@@ -317,6 +338,10 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
+    .nav__products_container {
+        width: 100%;
+    }
+
     .nav__links {
         display: none;
     }
