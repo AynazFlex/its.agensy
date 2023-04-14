@@ -7,6 +7,7 @@ const nav__products_info = nav_products.querySelector('.nav__products_info')
 const info = nav__products_info.querySelector('span')
 const delete__all = nav__products_info.querySelector('button')
 const nav__products_close = nav_products.querySelector('.nav__products_close')
+const nav__products_total = nav_products.querySelector('.nav__products_total')
 
 class Store {
   constructor({ initState, reducer }) {
@@ -452,6 +453,12 @@ products.addConsumer(state => {
     nav_korzina.textContent = prod.length
     info.textContent = `${prod.length} товара`
     nav__products.innerHTML = prod.join('')
+    nav__products_total.textContent = Object.values(state.korzina).reduce((total, item) => {
+        if(!item.delete) {
+            return total + item.amount*item.price
+        }
+        return total
+    }, 0) + '₽'
 })
 
 main__products.onclick = (e) => {
