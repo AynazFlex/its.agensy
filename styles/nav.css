@@ -274,7 +274,8 @@ body {
     align-items: center;
 }
 
-.nav__product_button {
+.nav__product_button-minus,
+.nav__product_button-plus {
     display: block;
     width: 40px;
     height: 24px;

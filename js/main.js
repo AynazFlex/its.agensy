@@ -2,11 +2,11 @@
 
 const main__products = document.body.querySelector('.main__products-items')
 const main__desktop = document.body.querySelector('.main__desktop')
-const nav__products = document.body.querySelector('.nav__products_items')
-const nav__products_info = document.body.querySelector('.nav__products_info')
+const nav__products = nav_products.querySelector('.nav__products_items')
+const nav__products_info = nav_products.querySelector('.nav__products_info')
 const info = nav__products_info.querySelector('span')
 const delete__all = nav__products_info.querySelector('button')
-const nav__products_close = document.body.querySelector('.nav__products_close')
+const nav__products_close = nav_products.querySelector('.nav__products_close')
 
 class Store {
   constructor({ initState, reducer }) {
@@ -314,14 +314,14 @@ const initState = {
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
-    case "PREDELETE_PRODUCT": {
+    case "CHANGE_STATUS_PRODUCT": {
       return {
         ...state,
         korzina: state.korzina.map((item) =>
           item.id === payload.id
             ? {
                 ...item,
-                satus: "delete",
+                delete: !item.delete
               }
             : item
         ),
@@ -332,15 +332,6 @@ const reducer = (state, { type, payload }) => {
         ...state,
         korzina: state.korzina.filter((item) => !item.delete),
       };
-    }
-    case "ACTIVE_PRODUCT": {
-        return {
-            ...state,
-            korzina: state.korzina.map((item) => item.id === payload.id ? {
-                ...item,
-                delete: false,
-            } : item),
-        };
     }
     case "PREDELETE_PRODUCT_ALL": {
         return {
@@ -366,6 +357,32 @@ const reducer = (state, { type, payload }) => {
           },
         ],
       };
+    }
+    case "PLUS_PRODUCT": {
+        return {
+            ...state,
+            korzina: state.korzina.map((item) =>
+              item.id === payload.id
+                ? {
+                    ...item,
+                    amount: item.amount + 1
+                  }
+                : item
+            ),
+        };
+    }
+    case "MINUS_PRODUCT": {
+        return {
+            ...state,
+            korzina: state.korzina.map((item) =>
+              item.id === payload.id
+                ? {
+                    ...item,
+                    amount: item.amount === 1 ? 1 : item.amount - 1
+                  }
+                : item
+            ),
+        };
     }
   }
   return state;
@@ -409,20 +426,20 @@ products.addConsumer(state => {
                 <div class="nav__product_price">${item.price} ₽</div>
             </div>
             <div class="nav__product_panel${item.delete ? ' nav__product--02op' : ''}">
-                <button class="nav__product_button">
+                <button data-id=${item.delete || item.id} class="nav__product_button-minus">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.3335 8H12.6668" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>                                    
                 </button>
                 <div class="nav__product_amount">${item.amount}</div>
-                <button class="nav__product_button">
+                <button data-id=${item.delete || item.id} class="nav__product_button-plus">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 3.33325V12.6666" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M3.3335 8H12.6668" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>                                    
                 </button>
             </div>
-            <button class="nav__product_btn">
+            <button data-id=${item.id} class="nav__product_btn">
                 ${item.delete ? (
                     '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 1L21 5L17 9" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 11V9C3 7.93913 3.42143 6.92172 4.17157 6.17157C4.92172 5.42143 5.93913 5 7 5H21" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 23L3 19L7 15" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 13V15C21 16.0609 20.5786 17.0783 19.8284 17.8284C19.0783 18.5786 18.0609 19 17 19H3" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
                 ) : (
@@ -455,6 +472,36 @@ delete__all.onclick = () => {
     products.dispatchEvent([{
         type: "PREDELETE_PRODUCT_ALL",
     }])
+}
+
+nav__products.onclick = (e) => {
+    const elem = e.target
+    if(elem.closest('.nav__product_button-plus')) {
+        const id = elem.closest('.nav__product_button-plus').dataset.id
+        id !== true && products.dispatchEvent([{ 
+            type: 'PLUS_PRODUCT',
+            payload: {
+                id: +id
+            }
+        }])
+    }
+    if(elem.closest('.nav__product_button-minus')) {
+        const id = elem.closest('.nav__product_button-minus').dataset.id
+        id !== true && products.dispatchEvent([{ 
+            type: 'MINUS_PRODUCT',
+            payload: {
+                id: +id
+            }
+        }])
+    }
+    if(elem.closest('.nav__product_btn')) {
+        products.dispatchEvent([{ 
+            type: 'CHANGE_STATUS_PRODUCT',
+            payload: {
+                id: +elem.closest('.nav__product_btn').dataset.id
+            }
+        }])
+    }
 }
 
 nav__products_close.onclick = () => {

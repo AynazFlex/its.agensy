@@ -25,7 +25,7 @@ nav_korzina.onclick = () => {
 
 nav_products.onclick = (e) => {
     const elem = e.target
-    if(!elem.closest('.nav__products_container') || elem.closest('.nav__products_close')) {
+    if(elem.closest('.nav__products_close')) {
         animEnd(nav_products_container).then(() => nav_products.classList.remove('nav__active-3'))
         nav_products_container.classList.remove('nav__active-4')
     }
