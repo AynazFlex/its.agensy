@@ -3,6 +3,9 @@
 const main__products = document.body.querySelector('.main__products-items')
 const main__desktop = document.body.querySelector('.main__desktop')
 const nav__products = document.body.querySelector('.nav__products_items')
+const nav__products_info = document.body.querySelector('.nav__products_info')
+const info = nav__products_info.querySelector('span')
+const delete__all = nav__products_info.querySelector('button')
 
 class Store {
   constructor({ initState, reducer }) {
@@ -287,7 +290,7 @@ const initState = {
       img: "photo_2",
       amount: 2,
       price: 9600,
-      satus: "active",
+      delete: false
     },
     {
       id: 2,
@@ -295,7 +298,7 @@ const initState = {
       img: "photo_6",
       amount: 1,
       price: 4800,
-      satus: "active",
+      delete: false
     },
     {
       id: 3,
@@ -303,7 +306,7 @@ const initState = {
       img: "photo_7",
       amount: 1,
       price: 4800,
-      satus: "delete",
+      delete: true
     },
   ],
 };
@@ -329,6 +332,15 @@ const reducer = (state, { type, payload }) => {
         korzina: state.korzina.filter((item) => item.id !== payload.id),
       };
     }
+    case "PREDELETE_PRODUCT_ALL": {
+        return {
+          ...state,
+          korzina: state.korzina.map((item) => ({
+            ...item,
+            delete: true
+          })),
+        };
+    }
     case "ADD_PRODUCT": {
       return {
         ...state,
@@ -340,7 +352,7 @@ const reducer = (state, { type, payload }) => {
             img: payload.img,
             amount: 1,
             price: payload.price,
-            satus: "active",
+            delete: false
           },
         ],
       };
@@ -381,12 +393,12 @@ products.addConsumer((state) => {
 products.addConsumer(state => {
     const prod = Object.values(state.korzina).map(item => `
         <div class="nav__product">
-            <img class="nav__product_img" src="./assets/img/${item.img}.png" alt="">
-            <div class="nav__product_info">
+            <img class="nav__product_img${item.delete ? ' nav__product--04op' : ''}" src="./assets/img/${item.img}.png" alt="">
+            <div class="nav__product_info${item.delete ? ' nav__product--02op' : ''}">
                 <a href="#" class="nav__product_title">${item.title}</a>
                 <div class="nav__product_price">${item.price} ₽</div>
             </div>
-            <div class="nav__product_panel">
+            <div class="nav__product_panel${item.delete ? ' nav__product--02op' : ''}">
                 <button class="nav__product_button">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.3335 8H12.6668" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -401,16 +413,17 @@ products.addConsumer(state => {
                 </button>
             </div>
             <button class="nav__product_btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g opacity="0.2">
-                        <path d="M18 6L6 18" stroke="#1F2020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M6 6L18 18" stroke="#1F2020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                    </g>
-                </svg>                                
+                ${item.delete ? (
+                    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 1L21 5L17 9" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 11V9C3 7.93913 3.42143 6.92172 4.17157 6.17157C4.92172 5.42143 5.93913 5 7 5H21" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 23L3 19L7 15" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 13V15C21 16.0609 20.5786 17.0783 19.8284 17.8284C19.0783 18.5786 18.0609 19 17 19H3" stroke="black" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                ) : (
+                    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.2"><path d="M18 6L6 18" stroke="#1F2020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6L18 18" stroke="#1F2020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></g></svg>'
+                )}                               
             </button>
         </div>
     `)
 
+    nav_korzina.textContent = prod.length
+    info.textContent = `${prod.length} товара`
     nav__products.innerHTML = prod.join('')
 })
 
@@ -426,6 +439,12 @@ main__products.onclick = (e) => {
             }
         }])
     }
+}
+
+delete__all.onclick = () => {
+    products.dispatchEvent([{
+        type: "PREDELETE_PRODUCT_ALL",
+    }])
 }
 
 novelty.onchange = () => {
