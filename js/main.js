@@ -6,6 +6,7 @@ const nav__products = document.body.querySelector('.nav__products_items')
 const nav__products_info = document.body.querySelector('.nav__products_info')
 const info = nav__products_info.querySelector('span')
 const delete__all = nav__products_info.querySelector('button')
+const nav__products_close = document.body.querySelector('.nav__products_close')
 
 class Store {
   constructor({ initState, reducer }) {
@@ -329,8 +330,17 @@ const reducer = (state, { type, payload }) => {
     case "DELETE_PRODUCT": {
       return {
         ...state,
-        korzina: state.korzina.filter((item) => item.id !== payload.id),
+        korzina: state.korzina.filter((item) => !item.delete),
       };
+    }
+    case "ACTIVE_PRODUCT": {
+        return {
+            ...state,
+            korzina: state.korzina.map((item) => item.id === payload.id ? {
+                ...item,
+                delete: false,
+            } : item),
+        };
     }
     case "PREDELETE_PRODUCT_ALL": {
         return {
@@ -444,6 +454,12 @@ main__products.onclick = (e) => {
 delete__all.onclick = () => {
     products.dispatchEvent([{
         type: "PREDELETE_PRODUCT_ALL",
+    }])
+}
+
+nav__products_close.onclick = () => {
+    products.dispatchEvent([{
+        type: "DELETE_PRODUCT",
     }])
 }
 
